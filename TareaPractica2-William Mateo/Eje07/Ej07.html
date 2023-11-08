@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 7</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.nav-menu {
+		  list-style-type: none;
+		  margin: 0;
+		  padding: 0;
+		  background-color: #333;
+		}
+		
+		.nav-menu li {
+		  display: inline-block;
+		  position: relative;
+		}
+		
+		.nav-menu li a {
+		  display: block;
+		  padding: 15px 20px;
+		  text-decoration: none;
+		  color: #fff;
+		  background-color: #333;
+		}
+		
+		.nav-menu li:hover > ul {
+		  display: block;
+		}
+	
+		.nav-menu ul {
+		  display: none;
+		  position: absolute;
+		  top: 100%;
+		  left: 0;
+		  background-color: #333;
+		}
+		
+		.nav-menu ul li {
+		  display: block;
+		}
+		
+		.nav-menu ul li a {
+		  padding: 10px 30px;
+		  color: #fff;
+		  text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+	<ul class="nav-menu">
+		<li>
+			<a href="Ej07.html">Home</a>
+		</li>
+		<li>
+			<a href="#">Ejercicios</a>
+			<ul>
+				<li><a href="../Eje04/Ej04.html">Reloj Analogico</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Formulario</a>
+            <ul>
+				<li><a href="../Eje05/Ej05.html">Formulario de Validación</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Lista</a>
+            <ul>
+				<li><a href="../Eje06/Ej06.html">Lista de Tareas</a></li>
+			</ul>
+		</li>
+	</ul>
+	<script>
+		const navMenuItems = document.querySelectorAll('.nav-menu li');
+
+		navMenuItems.forEach(item => {
+			const subMenu = item.querySelector('ul');
+			if (subMenu) {
+				item.addEventListener('mouseover', () => {
+					subMenu.style.display = 'block';
+				});
+				item.addEventListener('mouseout', () => {
+					subMenu.style.display = 'none';
+				});
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 3</title>
+	<style>
+		#container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		#img {
+			transition: 0.3s ease;
+			width: 50%;
+			height: auto;
+		}
+
+		#img:hover {
+			transform: scale(1.2);
+		}
+	</style>
+</head>
+<body>
+    <h1>Cambio de Imagen con el Cursor</h1>
+	<div id="container">
+		<img id="img" src="imagen1.jpg" onmouseover="changeImage()" onmouseout="restoreImage()" />
+	</div>
+
+	<script>
+		function changeImage() {
+			document.getElementById("img").src = "imagen2.jpg";
+		}
+
+		function restoreImage() {
+			document.getElementById("img").src = "imagen1.jpg";
+		}
+	</script>
+</body>
+</html>

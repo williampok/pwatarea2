@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 6</title>
+    <style>
+       @import url(estilo.css);
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tareas</h1>
+        <input type="text" id="taskInput" placeholder="Agregar una nueva tarea">
+        <button onclick="agregarTarea()">Agregar</button>
+        <ul id="taskList">
+        </ul>
+    </div>
+    <script>
+        function agregarTarea() {
+            var taskInput = document.getElementById("taskInput");
+            var taskText = taskInput.value.trim();
+            if (taskText === "") {
+                return;
+            }
+            var taskList = document.getElementById("taskList");
+            var li = document.createElement("li");
+            li.innerHTML = taskText + '<button onclick="eliminarTarea(this)">Eliminar</button>';
+            taskList.appendChild(li);
+            taskInput.value = "";
+        }
+        function eliminarTarea(button) {
+            var li = button.parentElement;
+            var taskList = document.getElementById("taskList");
+            taskList.removeChild(li);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .carrusel-container {
+            display: flex;
+            align-items: center;
+            max-width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carrusel {
+            display: flex;
+            width: 100%;
+            position: relative;
+        }
+
+        .carrusel img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .imagen-destacada {
+            transform: scale(1.3); 
+        }
+
+        .boton-izquierdo, .boton-derecho {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .boton-izquierdo {
+            left: 10px;
+        }
+
+        .boton-derecho {
+            right: 10px;
+        }
+
+        .boton-izquierdo::before {
+            content: "←";
+        }
+
+        .boton-derecho::before {
+            content: "→";
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+        color: rgb(0, 0, 0);
+        text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CARRUCEL DE IMAGENES RESPONSIVO</h1>
+        <br>
+        <br>
+    <div class="carrusel-container">
+        <div class="carrusel">
+            <img src="imagen1.jpg" alt="Imagen 1">
+            <img src="imagen2.jpg" alt="Imagen 2">
+            <img src="imagen3.jpg" alt="Imagen 3">
+        </div>
+        <button class="boton-izquierdo"></button>
+        <button class="boton-derecho"></button>
+    </div>
+    <script>
+        const carrusel = document.querySelector('.carrusel');
+        const botonIzquierdo = document.querySelector('.boton-izquierdo');
+        const botonDerecho = document.querySelector('.boton-derecho');
+        let imageIndex = 0;
+        botonDerecho.addEventListener('click', () => {
+            imageIndex++;
+            if (imageIndex >= carrusel.children.length) {
+                imageIndex = 0;
+            }
+            updateCarrusel();
+        });
+        botonIzquierdo.addEventListener('click', () => {
+            imageIndex--;
+            if (imageIndex < 0) {
+                imageIndex = carrusel.children.length - 1;
+            }
+            updateCarrusel();
+        });
+        function updateCarrusel() {
+            for (let i = 0; i < carrusel.children.length; i++) {
+                carrusel.children[i].classList.remove('imagen-destacada');
+            }
+            carrusel.children[imageIndex].classList.add('imagen-destacada');
+        }
+        setInterval(() => {
+            imageIndex++;
+            if (imageIndex >= carrusel.children.length) {
+                imageIndex = 0;
+            }
+            updateCarrusel();
+        }, 5000);
+        updateCarrusel();
+    </script>
+</body>
+</html>
